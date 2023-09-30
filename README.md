@@ -19,10 +19,10 @@ systemctl enable docker
 #查看docker版本命令
 docker version
 # docker 安装完成后
-# 安装ssr
-# 拉取镜像
+#安装ssr
+#拉取镜像
 $ docker pull teddysun/shadowsocks-r
-# 首先必须在host中创建一个配置文件： /etc/shadowsocks-r/config.json
+#首先必须在host中创建一个配置文件： /etc/shadowsocks-r/config.json
 {
     "server":"0.0.0.0",
     "server_ipv6":"::",
@@ -61,12 +61,12 @@ $ docker pull teddysun/shadowsocks-r
   "workers": 1
 }
 # 参数解释：
-# server_port：SSR端口，建议80,443
-# password：SSR连接密码
-# method：加密方式（不重要），常见的加密方式自行谷歌
-# protocol：协议（不重要），常见的协议自行谷歌
-# obfs：混淆方式（重要），必须是http_simple
-# 运行启动搭建完后
+#server_port：SSR端口，建议80,443
+#password：SSR连接密码
+#method：加密方式（不重要），常见的加密方式自行谷歌
+#protocol：协议（不重要），常见的协议自行谷歌
+#obfs：混淆方式（重要），必须是http_simple
+#运行启动搭建完后
 docker run -d --name js-ssr --restart=always \
     -p 80:80 -p 80:80/udp \
     -v /jsdata/ssr/config.json:/etc/shadowsocks-r/config.json \
@@ -75,3 +75,15 @@ docker run -d --name js-ssr --restart=always \
 # Android：shadowsocksr-android,https://github.com/shadowsocksrr/shadowsocksr-android/releases
 # IOS：Shadowrocket,https://apps.apple.com/us/app/shadowrocket/id932747118
 # Windows：shadowsocksr-csharp,https://github.com/shadowsocksrr/shadowsocksr-csharp/releases
+# 非docker版VPN
+#用pip安装ss服务
+yum install python-setuptools && easy_install pip
+#安装小飞机
+pip install shadowsocks
+#启动ssserver
+ssserver -p 443 -k MyPass -m rc4-md5 -d start
+#ssserver命令中 443是指端口 MyPass是指密码 rc4-md5是指加密方式，这些小伙伴们都可以自定义修改
+#停止ss服务可用 
+ssserver -d stop
+#需要其余加密执行如下命令
+yum install python–m2crypto
