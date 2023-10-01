@@ -10,7 +10,7 @@ uname -r
 # 安装依赖包
 yum install -y yum-utils device-mapper-persistent-data lvm2
 # docker-ce安装 社区版
-yum install -y docker-ce
+yum install -y docker
 启动docker并设置开机自启
 # 启动docker命令
 systemctl start docker
