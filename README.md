@@ -87,3 +87,10 @@ ssserver -p 443 -k MyPass -m rc4-md5 -d start
 ssserver -d stop
 #需要其余加密执行如下命令
 yum install python–m2crypto
+
+# *不要* 在值中使用这些字符：  \ " '
+wget https://get.vpnsetup.net -O vpn.sh
+sudo VPN_IPSEC_PSK='Wufan3374021@' \
+VPN_USER='wufan' \
+VPN_PASSWORD='123456' \
+sh vpn.sh
